@@ -16,49 +16,52 @@ var appcontainer = document.getElementById("app");
 
 export default function sample() {
 
-  // setup task skeleton
-  var taskHTML = `
-  <div class="task-container">
-    <div class="u-full-width" id="timer"></div>
-    <div class="task-container u-full-width" id="sample-container"></div>
-  </div>`
+  // temp
+  pspa();
 
-  appcontainer.innerHTML = taskHTML;
+  // // setup task skeleton
+  // var taskHTML = `
+  // <div class="task-container">
+  //   <div class="u-full-width timer" id="timer"></div>
+  //   <div class="task-container u-full-width" id="sample-container"></div>
+  // </div>`
 
-  // elements
-  var timerEl = document.getElementById("timer");
-  var sampleContainer = document.getElementById("sample-container");
+  // appcontainer.innerHTML = taskHTML;
 
-  // timer init
-  var timer = 0;
- 
-  // timer/stimulus presentation logic
-  var sampleTask = setInterval(() => {
-    timer++;
-    timerEl.innerHTML = timer;
-    console.log(timer);
-  
-    // render first stimulus
-    renderSample(0);
+  // // elements
+  // var timerEl = document.getElementById("timer");
+  // var sampleContainer = document.getElementById("sample-container");
 
-    switch (timer) {
-      case 15:
-        renderSample(1);
-        break;
-      case 30:
-        renderSample(2);
-        break;
-      case 45:
-        renderSample(3);
-        break;
-      case 60:
-        console.log("done with sample");
-        pspa();
-        clearInterval(sampleTask);
-        break;
-    }
+  // // timer init
+  // var timer = 0;
 
-  }, 1000);
+  // // timer/stimulus presentation logic
+  // var sampleTask = setInterval(() => {
+  //   timer++;
+  //   timerEl.innerHTML = timer;
+  //   console.log(timer);
+
+  //   // render first stimulus
+  //   renderSample(0);
+
+  //   switch (timer) {
+  //     case 15:
+  //       renderSample(1);
+  //       break;
+  //     case 30:
+  //       renderSample(2);
+  //       break;
+  //     case 45:
+  //       renderSample(3);
+  //       break;
+  //     case 60:
+  //       console.log("done with sample");
+  //       pspa();
+  //       clearInterval(sampleTask);
+  //       break;
+  //   }
+
+  // }, 1000);
 }
 
 function renderSample(i) {

@@ -111,3 +111,8 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+
+.timer {
+  font-size: 30px;
+  color: red;
+}

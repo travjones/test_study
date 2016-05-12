@@ -10,6 +10,13 @@ var data = {}
 // array to hold src of each selection
 var choices = [];
 
+var trialCounter = 0;
+
+// timer init
+var timer = 0;
+
+var makingChoice = false;
+
 // stim pairs
 const stimpairs = [
   ["stimuli/1.gif", "stimuli/2.gif"],
@@ -25,84 +32,112 @@ var randstimpairs = [];
 
 for (var i = 0; i < stimpairs.length; i++) {
   var t = shuffle(temp[i]);
-  randstimpairs.push(t); 
+  randstimpairs.push(t);
 }
 
 console.log(randstimpairs);
 
 export default function pspa() {
+  // setup task skeleton
+  var taskHTML = `
+  <div class="task-container">
+    <div class="u-full-width timer" id="timer"></div>
+    <div id="sample-container" class="task-container row"></div>
+    <div id="button-container" class="row">
+      <div class="six columns">
+        <button id="btnLeft" class="button-primary" disabled>^</button>
+      </div>
+      <div class="six columns">
+        <button id="btnRight" class="button-primary" disabled>^</button>
+      </div>
+    </div>
+  </div>
+  `;
+
+  appcontainer.innerHTML = taskHTML;
+
+  // elements
+  var timerEl = document.getElementById("timer");
+  var sampleContainer = document.getElementById("sample-container");
+  var leftBtn = document.getElementById("btnLeft");
+  var rightBtn = document.getElementById("btnRight");
+
+
   // render first pair
-  renderPair(0);
-  
+  renderPair(trialCounter);
+
   var left = document.getElementById("left");
-  left.addEventListener("click", leftHandler);
+  leftBtn.addEventListener("click", leftHandler);
 
   var right = document.getElementById("right");
-  left.addEventListener("click", leftHandler);
+  rightBtn.addEventListener("click", rightHandler);
 
-  // timer init
-  var timer = 0;
+  // timer
+  var timerFunc = setInterval(() => {
 
-  // timer/stimulus presentation logic
-  var pspaTask = setInterval(() => {
-    timer++;
-    console.log(timer);
-    
-    switch (timer) {
-      case 15:
-        renderPair(1);
-        break;
-      case 30:
-        renderPair(2);
-        break;
-      case 45:
-        renderPair(3);
-        break;
-      case 60:
-        renderPair(4);
-        break;
-      case 75:
-        renderPair(5);
-        break;
-      case 90:
-        console.log("done with pspa");
-        clearInterval(pspaTask);
-        break;
+    if (timer === 15) {
+      makingChoice = true;
+      leftBtn.disabled = false;
+      rightBtn.disabled = false;
+      timerEl.innerHTML = "pick your favorite";
+      console.log("yo1!")
+    } else {
+      timer++;
+      timerEl.innerHTML = timer;
+      console.log(timer);
     }
 
   }, 1000);
-  // TO-DO
-  // write template -- use img src attribute to keep track of stim?
-  // render randstimpairs
-  // data -> freq of selection
-
 }
 
 function renderPair(i) {
   let stim = randstimpairs[i];
   let pair = stim,
-  taskHTML = `
-  <div id="sample-container" class="task-container row">
+  pspaHTML = `
     <div class="six columns">
       <img src="${ pair[0] }" id="left">
     </div>
-    <div class="six columns" id="right">
-      <img src="${ pair[1] }">
-    </div>
-  </div>`;
+    <div class="six columns">
+      <img src="${ pair[1] }" id="right">
+    </div>`;
 
-  appcontainer.innerHTML = taskHTML;
+  var sampleContainer = document.getElementById("sample-container");
+  sampleContainer.innerHTML = pspaHTML;
   console.log(pair);
 }
 
 function leftHandler() {
   var left = document.getElementById("left");
-  var choice = left.getAttribute("src"); 
+  var choice = left.getAttribute("src");
   choices.push(choice);
+  nextTrial();
 }
 
 function rightHandler() {
   var right = document.getElementById("right");
   var choice = right.getAttribute("src");
   choices.push(choice);
+  nextTrial();
+}
+
+function nextTrial() {
+  console.log(choices);
+  trialCounter++
+
+  if (trialCounter > 5) {
+    postData();
+    return;
+  }
+
+  makingChoice = false;
+  renderPair(trialCounter);
+  timer = 0;
+  var leftBtn = document.getElementById("btnLeft");
+  var rightBtn = document.getElementById("btnRight");
+  leftBtn.disabled = true;
+  rightBtn.disabled = true;
+}
+
+function postData() {
+  console.log("post: " + choices);
 }
