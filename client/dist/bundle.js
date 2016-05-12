@@ -159,44 +159,52 @@
 
 	function sample() {
 
-	  // setup task skeleton
-	  var taskHTML = '\n  <div class="task-container">\n    <div class="u-full-width" id="timer"></div>\n    <div class="task-container u-full-width" id="sample-container"></div>\n  </div>';
+	  // temp
+	  (0, _pspa2.default)();
 
-	  appcontainer.innerHTML = taskHTML;
+	  // // setup task skeleton
+	  // var taskHTML = `
+	  // <div class="task-container">
+	  //   <div class="u-full-width timer" id="timer"></div>
+	  //   <div class="task-container u-full-width" id="sample-container"></div>
+	  // </div>`
 
-	  // elements
-	  var timerEl = document.getElementById("timer");
-	  var sampleContainer = document.getElementById("sample-container");
+	  // appcontainer.innerHTML = taskHTML;
 
-	  // timer init
-	  var timer = 0;
+	  // // elements
+	  // var timerEl = document.getElementById("timer");
+	  // var sampleContainer = document.getElementById("sample-container");
 
-	  // timer/stimulus presentation logic
-	  var sampleTask = setInterval(function () {
-	    timer++;
-	    timerEl.innerHTML = timer;
-	    console.log(timer);
+	  // // timer init
+	  // var timer = 0;
 
-	    // render first stimulus
-	    renderSample(0);
+	  // // timer/stimulus presentation logic
+	  // var sampleTask = setInterval(() => {
+	  //   timer++;
+	  //   timerEl.innerHTML = timer;
+	  //   console.log(timer);
 
-	    switch (timer) {
-	      case 15:
-	        renderSample(1);
-	        break;
-	      case 30:
-	        renderSample(2);
-	        break;
-	      case 45:
-	        renderSample(3);
-	        break;
-	      case 60:
-	        console.log("done with sample");
-	        (0, _pspa2.default)();
-	        clearInterval(sampleTask);
-	        break;
-	    }
-	  }, 1000);
+	  //   // render first stimulus
+	  //   renderSample(0);
+
+	  //   switch (timer) {
+	  //     case 15:
+	  //       renderSample(1);
+	  //       break;
+	  //     case 30:
+	  //       renderSample(2);
+	  //       break;
+	  //     case 45:
+	  //       renderSample(3);
+	  //       break;
+	  //     case 60:
+	  //       console.log("done with sample");
+	  //       pspa();
+	  //       clearInterval(sampleTask);
+	  //       break;
+	  //   }
+
+	  // }, 1000);
 	}
 
 	function renderSample(i) {
@@ -250,6 +258,13 @@
 	// array to hold src of each selection
 	var choices = [];
 
+	var trialCounter = 0;
+
+	// timer init
+	var timer = 0;
+
+	var makingChoice = false;
+
 	// stim pairs
 	var stimpairs = [["stimuli/1.gif", "stimuli/2.gif"], ["stimuli/1.gif", "stimuli/3.gif"], ["stimuli/1.gif", "stimuli/4.gif"], ["stimuli/2.gif", "stimuli/3.gif"], ["stimuli/2.gif", "stimuli/4.gif"], ["stimuli/3.gif", "stimuli/4.gif"]];
 
@@ -264,57 +279,50 @@
 	console.log(randstimpairs);
 
 	function pspa() {
+	  // setup task skeleton
+	  var taskHTML = "\n  <div class=\"task-container\">\n    <div class=\"u-full-width timer\" id=\"timer\"></div>\n    <div id=\"sample-container\" class=\"task-container row\"></div>\n    <div id=\"button-container\" class=\"row\">\n      <div class=\"six columns\">\n        <button id=\"btnLeft\" class=\"button-primary\" disabled>^</button>\n      </div>\n      <div class=\"six columns\">\n        <button id=\"btnRight\" class=\"button-primary\" disabled>^</button>\n      </div>\n    </div>\n  </div>\n  ";
+
+	  appcontainer.innerHTML = taskHTML;
+
+	  // elements
+	  var timerEl = document.getElementById("timer");
+	  var sampleContainer = document.getElementById("sample-container");
+	  var leftBtn = document.getElementById("btnLeft");
+	  var rightBtn = document.getElementById("btnRight");
+
 	  // render first pair
-	  renderPair(0);
+	  renderPair(trialCounter);
 
 	  var left = document.getElementById("left");
-	  left.addEventListener("click", leftHandler);
+	  leftBtn.addEventListener("click", leftHandler);
 
 	  var right = document.getElementById("right");
-	  left.addEventListener("click", leftHandler);
+	  rightBtn.addEventListener("click", rightHandler);
 
-	  // timer init
-	  var timer = 0;
+	  // timer
+	  var timerFunc = setInterval(function () {
 
-	  // timer/stimulus presentation logic
-	  var pspaTask = setInterval(function () {
-	    timer++;
-	    console.log(timer);
-
-	    switch (timer) {
-	      case 15:
-	        renderPair(1);
-	        break;
-	      case 30:
-	        renderPair(2);
-	        break;
-	      case 45:
-	        renderPair(3);
-	        break;
-	      case 60:
-	        renderPair(4);
-	        break;
-	      case 75:
-	        renderPair(5);
-	        break;
-	      case 90:
-	        console.log("done with pspa");
-	        clearInterval(pspaTask);
-	        break;
+	    if (timer === 15) {
+	      makingChoice = true;
+	      leftBtn.disabled = false;
+	      rightBtn.disabled = false;
+	      timerEl.innerHTML = "pick your favorite";
+	      console.log("yo1!");
+	    } else {
+	      timer++;
+	      timerEl.innerHTML = timer;
+	      console.log(timer);
 	    }
 	  }, 1000);
-	  // TO-DO
-	  // write template -- use img src attribute to keep track of stim?
-	  // render randstimpairs
-	  // data -> freq of selection
 	}
 
 	function renderPair(i) {
 	  var stim = randstimpairs[i];
 	  var pair = stim,
-	      taskHTML = "\n  <div id=\"sample-container\" class=\"task-container row\">\n    <div class=\"six columns\">\n      <img src=\"" + pair[0] + "\" id=\"left\">\n    </div>\n    <div class=\"six columns\" id=\"right\">\n      <img src=\"" + pair[1] + "\">\n    </div>\n  </div>";
+	      pspaHTML = "\n    <div class=\"six columns\">\n      <img src=\"" + pair[0] + "\" id=\"left\">\n    </div>\n    <div class=\"six columns\">\n      <img src=\"" + pair[1] + "\" id=\"right\">\n    </div>";
 
-	  appcontainer.innerHTML = taskHTML;
+	  var sampleContainer = document.getElementById("sample-container");
+	  sampleContainer.innerHTML = pspaHTML;
 	  console.log(pair);
 	}
 
@@ -322,12 +330,36 @@
 	  var left = document.getElementById("left");
 	  var choice = left.getAttribute("src");
 	  choices.push(choice);
+	  nextTrial();
 	}
 
 	function rightHandler() {
 	  var right = document.getElementById("right");
 	  var choice = right.getAttribute("src");
 	  choices.push(choice);
+	  nextTrial();
+	}
+
+	function nextTrial() {
+	  console.log(choices);
+	  trialCounter++;
+
+	  if (trialCounter > 5) {
+	    postData();
+	    return;
+	  }
+
+	  makingChoice = false;
+	  renderPair(trialCounter);
+	  timer = 0;
+	  var leftBtn = document.getElementById("btnLeft");
+	  var rightBtn = document.getElementById("btnRight");
+	  leftBtn.disabled = true;
+	  rightBtn.disabled = true;
+	}
+
+	function postData() {
+	  console.log("post: " + choices);
 	}
 
 /***/ },
@@ -365,7 +397,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}", ""]);
+	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n\n.timer {\n  font-size: 30px;\n  color: red;\n}", ""]);
 
 	// exports
 
