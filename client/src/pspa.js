@@ -92,6 +92,7 @@ function renderPair(i) {
   </div>`;
 
   appcontainer.innerHTML = taskHTML;
+  console.log(pair);
 }
 
 function leftHandler() {

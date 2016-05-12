@@ -15,17 +15,32 @@ var stimSet = shuffle(stimuli);
 var appcontainer = document.getElementById("app");
 
 export default function sample() {
+
+  // setup task skeleton
+  var taskHTML = `
+  <div class="task-container">
+    <div class="u-full-width" id="timer"></div>
+    <div class="task-container u-full-width" id="sample-container"></div>
+  </div>`
+
+  appcontainer.innerHTML = taskHTML;
+
+  // elements
+  var timerEl = document.getElementById("timer");
+  var sampleContainer = document.getElementById("sample-container");
+
   // timer init
   var timer = 0;
-
-  // render first stimulus
-  renderSample(0);
  
   // timer/stimulus presentation logic
   var sampleTask = setInterval(() => {
     timer++;
+    timerEl.innerHTML = timer;
     console.log(timer);
-    
+  
+    // render first stimulus
+    renderSample(0);
+
     switch (timer) {
       case 15:
         renderSample(1);
@@ -49,11 +64,11 @@ export default function sample() {
 function renderSample(i) {
   let stim = stimSet[i];
   let stimulus = stim,
-  taskHTML = `
-  <div id="sample-container u-full-width" class="task-container">
+  sampleHTML = `
+  <div class="task-container u-full-width" id="sample">
     <img src="${ stimulus }">
   </div>
   `;
-
-  appcontainer.innerHTML = taskHTML;
+  var sampleContainer = document.getElementById("sample-container");
+  sampleContainer.innerHTML = sampleHTML;
 }
