@@ -1,4 +1,5 @@
 import {shuffle} from './helper';
+import form from './form';
 
 // app container
 var appcontainer = document.getElementById("app");
@@ -41,8 +42,8 @@ export default function pspa() {
   // setup task skeleton
   var taskHTML = `
   <div class="task-container">
-    <div class="u-full-width timer" id="timer"></div>
-    <div id="sample-container" class="task-container row"></div>
+    <div class="container timer" id="timer"></div>
+    <div id="sample-container" class="row"></div>
     <div id="button-container" class="row">
       <div class="six columns">
         <button id="btnLeft" class="button-primary" disabled>^</button>
@@ -75,7 +76,7 @@ export default function pspa() {
   // timer
   var timerFunc = setInterval(() => {
 
-    if (timer === 15) {
+    if (timer === 3) {
       makingChoice = true;
       leftBtn.disabled = false;
       rightBtn.disabled = false;
@@ -95,10 +96,10 @@ function renderPair(i) {
   let pair = stim,
   pspaHTML = `
     <div class="six columns">
-      <img src="${ pair[0] }" id="left">
+      <img src="${ pair[0] }" id="left" class="pspa-stimulus">
     </div>
     <div class="six columns">
-      <img src="${ pair[1] }" id="right">
+      <img src="${ pair[1] }" id="right" class="pspa-stimulus">
     </div>`;
 
   var sampleContainer = document.getElementById("sample-container");
@@ -126,6 +127,7 @@ function nextTrial() {
 
   if (trialCounter > 5) {
     postData();
+    form();
     return;
   }
 

@@ -5,6 +5,14 @@ body {
   font-family: 'Open Sans';
 }
 
+button:disabled {
+  background-color: grey;
+}
+
+button:disabled:hover {
+  background-color: grey;
+}
+
 .app-container {
   position: relative;
   height: 100vh;
@@ -115,4 +123,8 @@ body {
 .timer {
   font-size: 30px;
   color: red;
+}
+
+.pspa-stimulus {
+  border: 2px solid black;
 }
