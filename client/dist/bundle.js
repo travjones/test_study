@@ -159,52 +159,47 @@
 
 	function sample() {
 
-	  // temp
-	  (0, _pspa2.default)();
+	  // // temp
+	  // pspa();
 
-	  // // setup task skeleton
-	  // var taskHTML = `
-	  // <div class="task-container">
-	  //   <div class="u-full-width timer" id="timer"></div>
-	  //   <div class="task-container u-full-width" id="sample-container"></div>
-	  // </div>`
+	  // setup task skeleton
+	  var taskHTML = '\n  <div class="task-container">\n    <div class="u-full-width timer" id="timer"></div>\n    <div class="task-container u-full-width" id="sample-container"></div>\n  </div>';
 
-	  // appcontainer.innerHTML = taskHTML;
+	  appcontainer.innerHTML = taskHTML;
 
-	  // // elements
-	  // var timerEl = document.getElementById("timer");
-	  // var sampleContainer = document.getElementById("sample-container");
+	  // elements
+	  var timerEl = document.getElementById("timer");
+	  var sampleContainer = document.getElementById("sample-container");
 
-	  // // timer init
-	  // var timer = 0;
+	  // timer init
+	  var timer = 0;
 
-	  // // timer/stimulus presentation logic
-	  // var sampleTask = setInterval(() => {
-	  //   timer++;
-	  //   timerEl.innerHTML = timer;
-	  //   console.log(timer);
+	  // timer/stimulus presentation logic
+	  var sampleTask = setInterval(function () {
+	    timer++;
+	    timerEl.innerHTML = timer;
+	    console.log(timer);
 
-	  //   // render first stimulus
-	  //   renderSample(0);
-
-	  //   switch (timer) {
-	  //     case 15:
-	  //       renderSample(1);
-	  //       break;
-	  //     case 30:
-	  //       renderSample(2);
-	  //       break;
-	  //     case 45:
-	  //       renderSample(3);
-	  //       break;
-	  //     case 60:
-	  //       console.log("done with sample");
-	  //       pspa();
-	  //       clearInterval(sampleTask);
-	  //       break;
-	  //   }
-
-	  // }, 1000);
+	    switch (timer) {
+	      case 1:
+	        renderSample(0);
+	        break;
+	      case 15:
+	        renderSample(1);
+	        break;
+	      case 30:
+	        renderSample(2);
+	        break;
+	      case 45:
+	        renderSample(3);
+	        break;
+	      case 60:
+	        console.log("done with sample");
+	        (0, _pspa2.default)();
+	        clearInterval(sampleTask);
+	        break;
+	    }
+	  }, 1000);
 	}
 
 	function renderSample(i) {
@@ -213,6 +208,7 @@
 	      sampleHTML = '\n  <div class="task-container u-full-width" id="sample">\n    <img src="' + stimulus + '">\n  </div>\n  ';
 	  var sampleContainer = document.getElementById("sample-container");
 	  sampleContainer.innerHTML = sampleHTML;
+	  console.log(stimulus);
 	}
 
 /***/ },
@@ -308,7 +304,7 @@
 	  // timer
 	  var timerFunc = setInterval(function () {
 
-	    if (timer === 3) {
+	    if (timer === 2) {
 	      makingChoice = true;
 	      leftBtn.disabled = false;
 	      rightBtn.disabled = false;

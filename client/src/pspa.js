@@ -76,7 +76,7 @@ export default function pspa() {
   // timer
   var timerFunc = setInterval(() => {
 
-    if (timer === 3) {
+    if (timer === 2) {
       makingChoice = true;
       leftBtn.disabled = false;
       rightBtn.disabled = false;
