@@ -59,7 +59,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(7);
+	__webpack_require__(8);
 
 	console.log("Yo, player!");
 
@@ -240,7 +240,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -248,6 +248,12 @@
 	exports.default = pspa;
 
 	var _helper = __webpack_require__(5);
+
+	var _form = __webpack_require__(7);
+
+	var _form2 = _interopRequireDefault(_form);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// app container
 	var appcontainer = document.getElementById("app");
@@ -280,7 +286,7 @@
 
 	function pspa() {
 	  // setup task skeleton
-	  var taskHTML = "\n  <div class=\"task-container\">\n    <div class=\"u-full-width timer\" id=\"timer\"></div>\n    <div id=\"sample-container\" class=\"task-container row\"></div>\n    <div id=\"button-container\" class=\"row\">\n      <div class=\"six columns\">\n        <button id=\"btnLeft\" class=\"button-primary\" disabled>^</button>\n      </div>\n      <div class=\"six columns\">\n        <button id=\"btnRight\" class=\"button-primary\" disabled>^</button>\n      </div>\n    </div>\n  </div>\n  ";
+	  var taskHTML = '\n  <div class="task-container">\n    <div class="container timer" id="timer"></div>\n    <div id="sample-container" class="row"></div>\n    <div id="button-container" class="row">\n      <div class="six columns">\n        <button id="btnLeft" class="button-primary" disabled>^</button>\n      </div>\n      <div class="six columns">\n        <button id="btnRight" class="button-primary" disabled>^</button>\n      </div>\n    </div>\n  </div>\n  ';
 
 	  appcontainer.innerHTML = taskHTML;
 
@@ -302,7 +308,7 @@
 	  // timer
 	  var timerFunc = setInterval(function () {
 
-	    if (timer === 15) {
+	    if (timer === 3) {
 	      makingChoice = true;
 	      leftBtn.disabled = false;
 	      rightBtn.disabled = false;
@@ -319,7 +325,7 @@
 	function renderPair(i) {
 	  var stim = randstimpairs[i];
 	  var pair = stim,
-	      pspaHTML = "\n    <div class=\"six columns\">\n      <img src=\"" + pair[0] + "\" id=\"left\">\n    </div>\n    <div class=\"six columns\">\n      <img src=\"" + pair[1] + "\" id=\"right\">\n    </div>";
+	      pspaHTML = '\n    <div class="six columns">\n      <img src="' + pair[0] + '" id="left" class="pspa-stimulus">\n    </div>\n    <div class="six columns">\n      <img src="' + pair[1] + '" id="right" class="pspa-stimulus">\n    </div>';
 
 	  var sampleContainer = document.getElementById("sample-container");
 	  sampleContainer.innerHTML = pspaHTML;
@@ -346,6 +352,7 @@
 
 	  if (trialCounter > 5) {
 	    postData();
+	    (0, _form2.default)();
 	    return;
 	  }
 
@@ -364,15 +371,31 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = form;
+	function form() {
+	    var formHTML = "\n    <div class=\"container\">\n        <h2>Information</h2>\n        <form id=\"demo-form\" name=\"demo-form\">\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"autism\">Do you have a child w/ autism spectrum disorder?</label>\n                    <input type=\"checkbox\" name=\"autism\" id=\"autism\">\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"famaba\">Is anyone in your family receiving applied behavior analysis (ABA) services??</label>\n                    <input type=\"checkbox\" name=\"famaba\" id=\"famaba\">\n                </div>  \n            </div>\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"age\">Age of individual receiving ABA services</label>\n                    <select class=\"u-full-width\" name=\"age\" id=\"age\">\n                        <option value=\"0\">N/A</option>\n                    </select>\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"income\">What is your household income?</label>\n                    <select class=\"u-full-width\" name=\"inome\" id=\"income\">\n                        <option value=\"0\">$0</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"u-full-width\">\n                    <label for=\"education\">Highest level of education obtained in your household.</label>\n                    <select class=\"u-full-width\" name=\"education\" id=\"education\"></select>\n                </div>\n                <input class=\"button-primary\" type=\"submit\" value=\"Submit\">\n            </div>\n\n        </form>\n    </div>";
+	    var appcontainer = document.getElementById("app");
+	    appcontainer.innerHTML = formHTML;
+	}
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(8);
+	var content = __webpack_require__(9);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(10)(content, {});
+	var update = __webpack_require__(11)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -389,21 +412,21 @@
 	}
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(9)();
+	exports = module.exports = __webpack_require__(10)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n\n.timer {\n  font-size: 30px;\n  color: red;\n}", ""]);
+	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\nbutton:disabled {\n  background-color: grey;\n}\n\nbutton:disabled:hover {\n  background-color: grey;\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n\n.timer {\n  font-size: 30px;\n  color: red;\n}\n\n.pspa-stimulus {\n  border: 2px solid black;\n}", ""]);
 
 	// exports
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/*
@@ -459,7 +482,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
