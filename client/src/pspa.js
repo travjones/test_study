@@ -19,22 +19,9 @@ var timer = 0;
 var makingChoice = false;
 
 // stim pairs
-const stimpairs = [
-  ["stimuli/1.gif", "stimuli/2.gif"],
-  ["stimuli/1.gif", "stimuli/3.gif"],
-  ["stimuli/1.gif", "stimuli/4.gif"],
-  ["stimuli/2.gif", "stimuli/3.gif"],
-  ["stimuli/2.gif", "stimuli/4.gif"],
-  ["stimuli/3.gif", "stimuli/4.gif"]
-];
+const stimpairs = ["1-2.gif", "1-4.gif", "2-3.gif", "3-1.gif", "3-4.gif", "4-2.gif"];
 
-var temp = shuffle(stimpairs);
-var randstimpairs = [];
-
-for (var i = 0; i < stimpairs.length; i++) {
-  var t = shuffle(temp[i]);
-  randstimpairs.push(t);
-}
+var randstimpairs = shuffle(stimpairs);
 
 console.log(randstimpairs);
 
@@ -46,10 +33,10 @@ export default function pspa() {
     <div id="sample-container" class="row"></div>
     <div id="button-container" class="row">
       <div class="six columns">
-        <button id="btnLeft" class="button-primary" disabled>^</button>
+        <button id="btnLeft" class="button-primary" disabled>left</button>
       </div>
       <div class="six columns">
-        <button id="btnRight" class="button-primary" disabled>^</button>
+        <button id="btnRight" class="button-primary" disabled>right</button>
       </div>
     </div>
   </div>
@@ -95,11 +82,8 @@ function renderPair(i) {
   let stim = randstimpairs[i];
   let pair = stim,
   pspaHTML = `
-    <div class="six columns">
-      <img src="${ pair[0] }" id="left" class="pspa-stimulus">
-    </div>
-    <div class="six columns">
-      <img src="${ pair[1] }" id="right" class="pspa-stimulus">
+    <div class="twelve columns">
+      <img src="/stimuli/${ pair }" id="stimpair" class="pspa-stimulus">
     </div>`;
 
   var sampleContainer = document.getElementById("sample-container");
@@ -108,15 +92,21 @@ function renderPair(i) {
 }
 
 function leftHandler() {
-  var left = document.getElementById("left");
-  var choice = left.getAttribute("src");
+  var stimpair = document.getElementById("stimpair");
+  var imgsrc = stimpair.getAttribute("src");
+  var shards = imgsrc.split("/");
+  var choice = shards[2][0];
+  console.log(choice);
   choices.push(choice);
   nextTrial();
 }
 
 function rightHandler() {
-  var right = document.getElementById("right");
-  var choice = right.getAttribute("src");
+  var stimpair = document.getElementById("stimpair");
+  var imgsrc = stimpair.getAttribute("src");
+  var shards = imgsrc.split("/");
+  var choice = shards[2][2];
+  console.log(choice);
   choices.push(choice);
   nextTrial();
 }
