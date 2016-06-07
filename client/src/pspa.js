@@ -6,7 +6,10 @@ var appcontainer = document.getElementById("app");
 
 
 // data object to hold frequency of selection across stimuli
-var data = {}
+var data = {one: 0,
+            two: 0,
+            three: 0,
+            four: 0};
 
 // array to hold src of each selection
 var choices = [];
@@ -116,7 +119,7 @@ function nextTrial() {
   trialCounter++
 
   if (trialCounter > 5) {
-    postData();
+    sumData();
     form();
     return;
   }
@@ -130,6 +133,23 @@ function nextTrial() {
   rightBtn.disabled = true;
 }
 
-function postData() {
-  console.log("post: " + choices);
+function sumData() {
+  for (var i = 0; i < choices.length; i++) {
+    switch(choices[i]) {
+      case "1":
+        data.one += 1;
+        break;
+      case "2":
+        data.two += 1;
+        break;
+      case "3":
+        data.three += 1;
+        break;
+      case "4":
+        data.four += 1;
+        break;
+    }
+  }
+
+  console.log(data);
 }

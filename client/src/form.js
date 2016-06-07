@@ -40,4 +40,23 @@ export default function form() {
   var appcontainer = document.getElementById("app");
   appcontainer.innerHTML = formHTML;
 
+  var demoForm = document.getElementById("demo-form");
+  demoForm.addEventListener("submit", postData);
+
+}
+
+function postData(e) {
+    e.PreventDefault();
+    data.autism = document.getElementById("autism").value;
+    data.famaba = document.getElementById("famaba").value;
+    data.age = document.getElementById("age").value;
+    data.income = document.getElementById("income").value;
+    data.education = document.getElementById("education").value;
+    console.log(data);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/data");
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send(JSON.stringify(data));
+
 }
