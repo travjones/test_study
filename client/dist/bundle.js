@@ -159,47 +159,52 @@
 
 	function sample() {
 
-	  // // temp
-	  // pspa();
+	  // temp
+	  (0, _pspa2.default)();
 
-	  // setup task skeleton
-	  var taskHTML = '\n  <div class="task-container">\n    <div class="u-full-width timer" id="timer"></div>\n    <div class="task-container u-full-width" id="sample-container"></div>\n  </div>';
+	  // // setup task skeleton
+	  // var taskHTML = `
+	  // <div class="task-container">
+	  //   <div class="u-full-width timer" id="timer"></div>
+	  //   <div class="task-container u-full-width" id="sample-container"></div>
+	  // </div>`
 
-	  appcontainer.innerHTML = taskHTML;
+	  // appcontainer.innerHTML = taskHTML;
 
-	  // elements
-	  var timerEl = document.getElementById("timer");
-	  var sampleContainer = document.getElementById("sample-container");
+	  // // elements
+	  // var timerEl = document.getElementById("timer");
+	  // var sampleContainer = document.getElementById("sample-container");
 
-	  // timer init
-	  var timer = 0;
+	  // // timer init
+	  // var timer = 0;
 
-	  // timer/stimulus presentation logic
-	  var sampleTask = setInterval(function () {
-	    timer++;
-	    timerEl.innerHTML = timer;
-	    console.log(timer);
+	  // // timer/stimulus presentation logic
+	  // var sampleTask = setInterval(() => {
+	  //   timer++;
+	  //   timerEl.innerHTML = timer;
+	  //   console.log(timer);
 
-	    switch (timer) {
-	      case 1:
-	        renderSample(0);
-	        break;
-	      case 15:
-	        renderSample(1);
-	        break;
-	      case 30:
-	        renderSample(2);
-	        break;
-	      case 45:
-	        renderSample(3);
-	        break;
-	      case 60:
-	        console.log("done with sample");
-	        (0, _pspa2.default)();
-	        clearInterval(sampleTask);
-	        break;
-	    }
-	  }, 1000);
+	  //   switch (timer) {
+	  //     case 1:
+	  //       renderSample(0);
+	  //       break;
+	  //     case 15:
+	  //       renderSample(1);
+	  //       break;
+	  //     case 30:
+	  //       renderSample(2);
+	  //       break;
+	  //     case 45:
+	  //       renderSample(3);
+	  //       break;
+	  //     case 60:
+	  //       console.log("done with sample");
+	  //       pspa();
+	  //       clearInterval(sampleTask);
+	  //       break;
+	  //   }
+
+	  // }, 1000);
 	}
 
 	function renderSample(i) {
@@ -255,7 +260,10 @@
 	var appcontainer = document.getElementById("app");
 
 	// data object to hold frequency of selection across stimuli
-	var data = {};
+	window.data = { one: 0,
+	  two: 0,
+	  three: 0,
+	  four: 0 };
 
 	// array to hold src of each selection
 	var choices = [];
@@ -268,21 +276,15 @@
 	var makingChoice = false;
 
 	// stim pairs
-	var stimpairs = [["stimuli/1.gif", "stimuli/2.gif"], ["stimuli/1.gif", "stimuli/3.gif"], ["stimuli/1.gif", "stimuli/4.gif"], ["stimuli/2.gif", "stimuli/3.gif"], ["stimuli/2.gif", "stimuli/4.gif"], ["stimuli/3.gif", "stimuli/4.gif"]];
+	var stimpairs = ["1-2.gif", "1-4.gif", "2-3.gif", "3-1.gif", "3-4.gif", "4-2.gif"];
 
-	var temp = (0, _helper.shuffle)(stimpairs);
-	var randstimpairs = [];
-
-	for (var i = 0; i < stimpairs.length; i++) {
-	  var t = (0, _helper.shuffle)(temp[i]);
-	  randstimpairs.push(t);
-	}
+	var randstimpairs = (0, _helper.shuffle)(stimpairs);
 
 	console.log(randstimpairs);
 
 	function pspa() {
 	  // setup task skeleton
-	  var taskHTML = '\n  <div class="task-container">\n    <div class="container timer" id="timer"></div>\n    <div id="sample-container" class="row"></div>\n    <div id="button-container" class="row">\n      <div class="six columns">\n        <button id="btnLeft" class="button-primary" disabled>^</button>\n      </div>\n      <div class="six columns">\n        <button id="btnRight" class="button-primary" disabled>^</button>\n      </div>\n    </div>\n  </div>\n  ';
+	  var taskHTML = '\n  <div class="task-container">\n    <div class="container timer" id="timer"></div>\n    <div id="sample-container" class="row"></div>\n    <div id="button-container" class="row">\n      <div class="six columns">\n        <button id="btnLeft" class="button-primary" disabled>left</button>\n      </div>\n      <div class="six columns">\n        <button id="btnRight" class="button-primary" disabled>right</button>\n      </div>\n    </div>\n  </div>\n  ';
 
 	  appcontainer.innerHTML = taskHTML;
 
@@ -321,7 +323,7 @@
 	function renderPair(i) {
 	  var stim = randstimpairs[i];
 	  var pair = stim,
-	      pspaHTML = '\n    <div class="six columns">\n      <img src="' + pair[0] + '" id="left" class="pspa-stimulus">\n    </div>\n    <div class="six columns">\n      <img src="' + pair[1] + '" id="right" class="pspa-stimulus">\n    </div>';
+	      pspaHTML = '\n    <div class="twelve columns">\n      <img src="/stimuli/' + pair + '" id="stimpair" class="pspa-stimulus">\n    </div>';
 
 	  var sampleContainer = document.getElementById("sample-container");
 	  sampleContainer.innerHTML = pspaHTML;
@@ -329,15 +331,21 @@
 	}
 
 	function leftHandler() {
-	  var left = document.getElementById("left");
-	  var choice = left.getAttribute("src");
+	  var stimpair = document.getElementById("stimpair");
+	  var imgsrc = stimpair.getAttribute("src");
+	  var shards = imgsrc.split("/");
+	  var choice = shards[2][0];
+	  console.log(choice);
 	  choices.push(choice);
 	  nextTrial();
 	}
 
 	function rightHandler() {
-	  var right = document.getElementById("right");
-	  var choice = right.getAttribute("src");
+	  var stimpair = document.getElementById("stimpair");
+	  var imgsrc = stimpair.getAttribute("src");
+	  var shards = imgsrc.split("/");
+	  var choice = shards[2][2];
+	  console.log(choice);
 	  choices.push(choice);
 	  nextTrial();
 	}
@@ -347,7 +355,7 @@
 	  trialCounter++;
 
 	  if (trialCounter > 5) {
-	    postData();
+	    sumData();
 	    (0, _form2.default)();
 	    return;
 	  }
@@ -361,8 +369,25 @@
 	  rightBtn.disabled = true;
 	}
 
-	function postData() {
-	  console.log("post: " + choices);
+	function sumData() {
+	  for (var i = 0; i < choices.length; i++) {
+	    switch (choices[i]) {
+	      case "1":
+	        window.data.one += 1;
+	        break;
+	      case "2":
+	        window.data.two += 1;
+	        break;
+	      case "3":
+	        window.data.three += 1;
+	        break;
+	      case "4":
+	        window.data.four += 1;
+	        break;
+	    }
+	  }
+
+	  console.log(window.data);
 	}
 
 /***/ },
@@ -376,9 +401,37 @@
 	});
 	exports.default = form;
 	function form() {
-	    var formHTML = "\n    <div class=\"container\">\n        <h2>Information</h2>\n        <form id=\"demo-form\" name=\"demo-form\">\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"autism\">Do you have a child w/ autism spectrum disorder?</label>\n                    <input type=\"checkbox\" name=\"autism\" id=\"autism\">\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"famaba\">Is anyone in your family receiving applied behavior analysis (ABA) services??</label>\n                    <input type=\"checkbox\" name=\"famaba\" id=\"famaba\">\n                </div>  \n            </div>\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"age\">Age of individual receiving ABA services</label>\n                    <select class=\"u-full-width\" name=\"age\" id=\"age\">\n                        <option value=\"0\">N/A</option>\n                    </select>\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"income\">What is your household income?</label>\n                    <select class=\"u-full-width\" name=\"inome\" id=\"income\">\n                        <option value=\"0\">$0</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"u-full-width\">\n                    <label for=\"education\">Highest level of education obtained in your household.</label>\n                    <select class=\"u-full-width\" name=\"education\" id=\"education\"></select>\n                </div>\n                <input class=\"button-primary\" type=\"submit\" value=\"Submit\">\n            </div>\n\n        </form>\n    </div>";
+	    var formHTML = "\n    <div class=\"container\">\n        <h2>Information</h2>\n        <form id=\"demo-form\" name=\"demo-form\" action=\"/data\" method=\"post\">\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"autism\">Do you have a child w/ autism spectrum disorder?</label>\n                    <input type=\"checkbox\" name=\"autism\" id=\"autism\">\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"famaba\">Is anyone in your family receiving applied behavior analysis (ABA) services??</label>\n                    <input type=\"checkbox\" name=\"famaba\" id=\"famaba\">\n                </div>  \n            </div>\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"age\">Age of individual receiving ABA services</label>\n                    <select class=\"u-full-width\" name=\"age\" id=\"age\">\n                        <option value=\"0\">N/A</option>\n                    </select>\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"income\">What is your household income?</label>\n                    <select class=\"u-full-width\" name=\"inome\" id=\"income\">\n                        <option value=\"0\">$0</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"u-full-width\">\n                    <label for=\"education\">Highest level of education obtained in your household.</label>\n                    <select class=\"u-full-width\" name=\"education\" id=\"education\"></select>\n                </div>\n                <input class=\"button-primary\" type=\"submit\" value=\"Submit\" id=\"submit-btn\">\n            </div>\n\n        </form>\n    </div>";
 	    var appcontainer = document.getElementById("app");
 	    appcontainer.innerHTML = formHTML;
+
+	    var demoForm = document.getElementById("demo-form");
+	    demoForm.addEventListener('submit', function (e) {
+	        e.preventDefault();
+	        postData();
+	    });
+	}
+
+	function postData() {
+	    data.autism = document.getElementById("autism").value;
+	    data.famaba = document.getElementById("famaba").value;
+	    data.age = document.getElementById("age").value;
+	    data.income = document.getElementById("income").value;
+	    data.education = document.getElementById("education").value;
+	    console.log(data);
+
+	    var xhr = new XMLHttpRequest();
+	    xhr.open("POST", "/data");
+	    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	    xhr.send(JSON.stringify(data));
+
+	    thanks();
+	}
+
+	function thanks() {
+	    var thanksHTML = "\n    <h1 style=\"\">Thanks for your participation!</h1>\n    ";
+	    var appcontainer = document.getElementById("app");
+	    appcontainer.innerHTML = thanksHTML;
 	}
 
 /***/ },

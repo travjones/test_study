@@ -2,7 +2,7 @@ export default function form() {
     var formHTML = `
     <div class="container">
         <h2>Information</h2>
-        <form id="demo-form" name="demo-form">
+        <form id="demo-form" name="demo-form" action="/data" method="post">
             <div class="row">
                 <div class="six columns">
                     <label for="autism">Do you have a child w/ autism spectrum disorder?</label>
@@ -32,7 +32,7 @@ export default function form() {
                     <label for="education">Highest level of education obtained in your household.</label>
                     <select class="u-full-width" name="education" id="education"></select>
                 </div>
-                <input class="button-primary" type="submit" value="Submit">
+                <input class="button-primary" type="submit" value="Submit" id="submit-btn">
             </div>
 
         </form>
@@ -41,12 +41,14 @@ export default function form() {
   appcontainer.innerHTML = formHTML;
 
   var demoForm = document.getElementById("demo-form");
-  demoForm.addEventListener("submit", postData);
+  demoForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    postData();
+  });
 
 }
 
-function postData(e) {
-    e.PreventDefault();
+function postData() {
     data.autism = document.getElementById("autism").value;
     data.famaba = document.getElementById("famaba").value;
     data.age = document.getElementById("age").value;
@@ -59,4 +61,13 @@ function postData(e) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify(data));
 
+    thanks();
+}
+
+function thanks() {
+    var thanksHTML = `
+    <h1 style="">Thanks for your participation!</h1>
+    `;
+    var appcontainer = document.getElementById("app");
+    appcontainer.innerHTML = thanksHTML;
 }

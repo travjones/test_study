@@ -6,7 +6,7 @@ var appcontainer = document.getElementById("app");
 
 
 // data object to hold frequency of selection across stimuli
-var data = {one: 0,
+window.data = {one: 0,
             two: 0,
             three: 0,
             four: 0};
@@ -137,19 +137,19 @@ function sumData() {
   for (var i = 0; i < choices.length; i++) {
     switch(choices[i]) {
       case "1":
-        data.one += 1;
+        window.data.one += 1;
         break;
       case "2":
-        data.two += 1;
+        window.data.two += 1;
         break;
       case "3":
-        data.three += 1;
+        window.data.three += 1;
         break;
       case "4":
-        data.four += 1;
+        window.data.four += 1;
         break;
     }
   }
 
-  console.log(data);
+  console.log(window.data);
 }
