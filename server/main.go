@@ -1,10 +1,13 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
+
+	_ "github.com/lib/pq"
 )
 
 type Data struct {
@@ -20,6 +23,7 @@ type Data struct {
 }
 
 func dataPost(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.RemoteAddr)
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.Println("error reading req body")
@@ -27,6 +31,24 @@ func dataPost(w http.ResponseWriter, r *http.Request) {
 
 	data := string(body)
 	fmt.Println(data)
+
+	db, err := sql.Open("postgres", "user=dev password=dttuf352 dbname=test_study sslmode=disable")
+	if err != nil {
+		log.Println("could not connect to db")
+	}
+
+	stmt, err := db.Prepare("insert into data (data) values ($1)")
+	if err != nil {
+		log.Println("error inserting data", err)
+	}
+
+	_, err = stmt.Exec(data)
+	if err != nil {
+		log.Println("Error inserting data")
+	}
+
+	stmt.Close()
+	db.Close()
 
 	// var d Data
 

@@ -66,7 +66,7 @@ export default function pspa() {
   // timer
   var timerFunc = setInterval(() => {
 
-    if (timer === 2) {
+    if (timer === 30) {
       makingChoice = true;
       leftBtn.disabled = false;
       rightBtn.disabled = false;
@@ -74,7 +74,8 @@ export default function pspa() {
       console.log("yo1!")
     } else {
       timer++;
-      timerEl.innerHTML = timer;
+      var timerDesc = 30 - timer;
+      timerEl.innerHTML = timerDesc;
       console.log(timer);
     }
 

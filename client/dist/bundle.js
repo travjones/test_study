@@ -86,7 +86,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function ic() {
-	  var icHTML = "\n  <div class=\"task-container\">\n    <form>\n      <p>Check the checkbox below to indicate that you agree with the informed consent below.</p>\n      <input type=\"checkbox\" id=\"ic-check\"></input>\n      <label for=\"ic-check\">I Agree</label>\n    </form>\n    <h3>INTRODUCTION</h3>\n    <p>My name is David J. Cox (david.j.cox@ufl.edu). I am a graduate researcher at the University of Florida. You are invited to participate in our study! Please take whatever time you need to review this page about the study. The decision to join, or not to join, is up to you.</p>\n    <p>In this research study, we are evaluating how people make choices while viewing a service provider’s online information. Deciding which service provider to select for you and your family is an important and complex process that we are interested in studying. The things we learn from conducting this study can help service providers, researchers, and the community at large make better information about services for consumers.</p>\n\n    <h3>WHAT IS INVOLVED IN THE STUDY?</h3>\n    <p>If you decide to participate you will be asked to view and explore the content of hypothetical service provider websites. The service provider websites you will see in this study are hypothetical and do not represent any actual service providers. After viewing the hypothetical service provider websites, we will ask you to make some choices between different options. We think this will take you X minutes.</p>\n    <p>While you are participating in our study, we will be collecting data on some aspects of your behavior as a consumer accessing information online. This can include mouse clicks, how long you look at a certain page, choices you make, and responses to any questions we present to you. Your participation in our study is anonymous – we do not collect any identifying information from you except for the IP you accessed the study on and basic demographics you voluntarily provide to us. This information is stored in a secured data server accessible only to the researchers of this study (contact information below).</p>\n    <p>You can stop participating in our study at any time by closing your web browser. Stopping early will not cause you to lose any benefits; however, we may exclude incomplete data from our final analysis.</p>\n\n    <h3>RISKS</h3>\n    <p>Participating in this study involves the risk of loss of confidentiality. Any time research is conducted over the web, there is a small chance that information might be accessed by a third party. These risks, however, are considered minimal as we are not collecting any identifying information and any data we track is stored directly on our secure server.</p>\n\n    <h3>BENEFITS OF TAKING PART IN THE STUDY?</h3>\n    <p>We do not expect you to benefit personally from participating in this study. However, your responses can help us and other researchers benefit consumers of clinical services in the future.</p>\n\n    <h3>CONFIDENTIALITY</h3>\n    <p>We will take steps to protect any information we collect from you. These steps include encrypted data transfers, secured data servers maintained in our offices, and omission of any identifying information. Any information we present to other researchers will have any potentially identifying information removed (e.g., IP addresses, individual demographics). In some cases we may present direct quotes from you as illustrative data, but we will remove any potentially identifying information before doing so. We will also be aggregating much of the data we collect from you, making it difficult or impossible to detect your participation amongst that of the other participants.</p>\n\n    <h3>CONTACTS FOR QUESTIONS OR PROBLEMS</h3>\n    <p>Please contact us if you have questions about the study or if you encounter any problems, unexpected physical or psychological discomforts, any injuries, or think that something unusual or unexpected is happening.</p>\n\n    <p>Primary Investigator: David Cox (david.j.cox@ufl.edu) Co-Investigators: Travis Jones (tjones0@ufl.edu) and Triton Ong (ong2@ufl.edu) Research Supervisor: Jesse Dallery (dallery@ufl.edu)</p>\n\n    <h3>YOUR RIGHTS AS A RESEARCH PARTICIPANT</h3>\n    <p>The University of Florida IRB Office is located at the following address: Box 112250, University of Florida, Gainesville, FL 32611-2250.</p>\n  </div>\n  ";
+	  var icHTML = "\n  <div class=\"task-container\">\n    <div class=\"u-full-width\">\n      <img src=\"/uflogo.png\" width=\"500\">\n    </div>\n    <form>\n      <p>Check the checkbox below to indicate that you agree with the informed consent below.</p>\n      <input type=\"checkbox\" id=\"ic-check\"></input>\n      <label for=\"ic-check\">I Agree</label>\n    </form>\n    <h3>INTRODUCTION</h3>\n    <p>My name is David J. Cox (david.j.cox@ufl.edu). I am a graduate researcher at the University of Florida. You are invited to participate in our study! Please take whatever time you need to review this page about the study. The decision to join, or not to join, is up to you.</p>\n    <p>In this research study, we are evaluating how people make choices while viewing a service provider’s online information. Deciding which service provider to select for you and your family is an important and complex process that we are interested in studying. The things we learn from conducting this study can help service providers, researchers, and the community at large make better information about services for consumers.</p>\n\n    <h3>WHAT IS INVOLVED IN THE STUDY?</h3>\n    <p>If you decide to participate you will be asked to view and explore the content of hypothetical service provider websites. The service provider websites you will see in this study are hypothetical and do not represent any actual service providers. After viewing the hypothetical service provider websites, we will ask you to make some choices between different options. We think this will take you X minutes.</p>\n    <p>While you are participating in our study, we will be collecting data on some aspects of your behavior as a consumer accessing information online. This can include mouse clicks, how long you look at a certain page, choices you make, and responses to any questions we present to you. Your participation in our study is anonymous – we do not collect any identifying information from you except for the IP you accessed the study on and basic demographics you voluntarily provide to us. This information is stored in a secured data server accessible only to the researchers of this study (contact information below).</p>\n    <p>You can stop participating in our study at any time by closing your web browser. Stopping early will not cause you to lose any benefits; however, we may exclude incomplete data from our final analysis.</p>\n\n    <h3>RISKS</h3>\n    <p>Participating in this study involves the risk of loss of confidentiality. Any time research is conducted over the web, there is a small chance that information might be accessed by a third party. These risks, however, are considered minimal as we are not collecting any identifying information and any data we track is stored directly on our secure server.</p>\n\n    <h3>BENEFITS OF TAKING PART IN THE STUDY?</h3>\n    <p>We do not expect you to benefit personally from participating in this study. However, your responses can help us and other researchers benefit consumers of clinical services in the future.</p>\n\n    <h3>CONFIDENTIALITY</h3>\n    <p>We will take steps to protect any information we collect from you. These steps include encrypted data transfers, secured data servers maintained in our offices, and omission of any identifying information. Any information we present to other researchers will have any potentially identifying information removed (e.g., IP addresses, individual demographics). In some cases we may present direct quotes from you as illustrative data, but we will remove any potentially identifying information before doing so. We will also be aggregating much of the data we collect from you, making it difficult or impossible to detect your participation amongst that of the other participants.</p>\n\n    <h3>CONTACTS FOR QUESTIONS OR PROBLEMS</h3>\n    <p>Please contact us if you have questions about the study or if you encounter any problems, unexpected physical or psychological discomforts, any injuries, or think that something unusual or unexpected is happening.</p>\n\n    <p>Primary Investigator: David Cox (david.j.cox@ufl.edu) Co-Investigators: Travis Jones (tjones0@ufl.edu) and Triton Ong (ong2@ufl.edu) Research Supervisor: Jesse Dallery (dallery@ufl.edu)</p>\n\n    <h3>YOUR RIGHTS AS A RESEARCH PARTICIPANT</h3>\n    <p>The University of Florida IRB Office is located at the following address: Box 112250, University of Florida, Gainesville, FL 32611-2250.</p>\n  </div>\n  ";
 
 	  var appcontainer = document.getElementById("app");
 	  appcontainer.innerHTML = icHTML;
@@ -118,7 +118,7 @@
 	function start() {
 	  console.log("From start.js!");
 
-	  var startHTML = "\n    <div class=\"start-container u-full-width\">\n      <p>Paste instructions here.</p>\n      <div class=\"start-btn\" id=\"start-btn\"><span>Start<span></div>\n    </div>\n  ";
+	  var startHTML = "\n    <div class=\"start-container u-full-width\">\n      <h1>Instructions -- Read before you hit Start.</h1>\n      <p>This project involves two sections. In the first section you will be presented with a series of example websites, one at a time. Each website will be presented on the screen for a fixed duration of 30 seconds. The purpose of this section is to familiarize each participant to the different websites were are interested in getting your feedback on. Following this first section, the second section will then present two websites at a time and, after a short period of time, ask you to choose which of the two websites you prefer. Please note that you can quit the research project at any time and can contact the Primary Investigator (david.j.cox@ufl.edu) or the Research Supervisor (dallery@ufl.edu) with any questions you may have. Click the button below to begin the study. </p>\n      <div class=\"start-btn\" id=\"start-btn\"><span>Start<span></div>\n    </div>\n  ";
 
 	  var appcontainer = document.getElementById("app");
 	  appcontainer.innerHTML = startHTML;
@@ -159,52 +159,49 @@
 
 	function sample() {
 
-	  // temp
-	  (0, _pspa2.default)();
+	  // // temp for testing
+	  // pspa();
 
-	  // // setup task skeleton
-	  // var taskHTML = `
-	  // <div class="task-container">
-	  //   <div class="u-full-width timer" id="timer"></div>
-	  //   <div class="task-container u-full-width" id="sample-container"></div>
-	  // </div>`
+	  // setup task skeleton
+	  var taskHTML = '\n  <div class="task-container">\n    <div class="u-full-width timer" id="timer"></div>\n    <div class="task-container u-full-width" id="sample-container"></div>\n  </div>';
 
-	  // appcontainer.innerHTML = taskHTML;
+	  appcontainer.innerHTML = taskHTML;
 
-	  // // elements
-	  // var timerEl = document.getElementById("timer");
-	  // var sampleContainer = document.getElementById("sample-container");
+	  // elements
+	  var timerEl = document.getElementById("timer");
+	  var sampleContainer = document.getElementById("sample-container");
 
-	  // // timer init
-	  // var timer = 0;
+	  // timer init
+	  var timer = 0;
 
-	  // // timer/stimulus presentation logic
-	  // var sampleTask = setInterval(() => {
-	  //   timer++;
-	  //   timerEl.innerHTML = timer;
-	  //   console.log(timer);
+	  // timer/stimulus presentation logic
+	  var sampleTask = setInterval(function () {
+	    timer++;
+	    var timerDesc = 120 - timer;
+	    timerEl.innerHTML = timerDesc;
+	    console.log(timer);
 
-	  //   switch (timer) {
-	  //     case 1:
-	  //       renderSample(0);
-	  //       break;
-	  //     case 15:
-	  //       renderSample(1);
-	  //       break;
-	  //     case 30:
-	  //       renderSample(2);
-	  //       break;
-	  //     case 45:
-	  //       renderSample(3);
-	  //       break;
-	  //     case 60:
-	  //       console.log("done with sample");
-	  //       pspa();
-	  //       clearInterval(sampleTask);
-	  //       break;
-	  //   }
-
-	  // }, 1000);
+	    switch (timer) {
+	      case 1:
+	        renderSample(0);
+	        break;
+	      case 30:
+	        renderSample(1);
+	        break;
+	      case 60:
+	        renderSample(2);
+	        break;
+	      case 90:
+	        renderSample(3);
+	        break;
+	      case 120:
+	        console.log("done with sample");
+	        (0, _pspa2.default)();
+	        clearInterval(sampleTask);
+	        timer = 0;
+	        break;
+	    }
+	  }, 1000);
 	}
 
 	function renderSample(i) {
@@ -306,7 +303,7 @@
 	  // timer
 	  var timerFunc = setInterval(function () {
 
-	    if (timer === 2) {
+	    if (timer === 30) {
 	      makingChoice = true;
 	      leftBtn.disabled = false;
 	      rightBtn.disabled = false;
@@ -314,7 +311,8 @@
 	      console.log("yo1!");
 	    } else {
 	      timer++;
-	      timerEl.innerHTML = timer;
+	      var timerDesc = 30 - timer;
+	      timerEl.innerHTML = timerDesc;
 	      console.log(timer);
 	    }
 	  }, 1000);
@@ -401,7 +399,7 @@
 	});
 	exports.default = form;
 	function form() {
-	    var formHTML = "\n    <div class=\"container\">\n        <h2>Information</h2>\n        <form id=\"demo-form\" name=\"demo-form\" action=\"/data\" method=\"post\">\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"autism\">Do you have a child w/ autism spectrum disorder?</label>\n                    <input type=\"checkbox\" name=\"autism\" id=\"autism\">\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"famaba\">Is anyone in your family receiving applied behavior analysis (ABA) services??</label>\n                    <input type=\"checkbox\" name=\"famaba\" id=\"famaba\">\n                </div>  \n            </div>\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"age\">Age of individual receiving ABA services</label>\n                    <select class=\"u-full-width\" name=\"age\" id=\"age\">\n                        <option value=\"0\">N/A</option>\n                    </select>\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"income\">What is your household income?</label>\n                    <select class=\"u-full-width\" name=\"inome\" id=\"income\">\n                        <option value=\"0\">$0</option>\n                    </select>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"u-full-width\">\n                    <label for=\"education\">Highest level of education obtained in your household.</label>\n                    <select class=\"u-full-width\" name=\"education\" id=\"education\"></select>\n                </div>\n                <input class=\"button-primary\" type=\"submit\" value=\"Submit\" id=\"submit-btn\">\n            </div>\n\n        </form>\n    </div>";
+	    var formHTML = "\n    <div class=\"container\">\n        <h2>Information</h2>\n        <form id=\"demo-form\" name=\"demo-form\" action=\"/data\" method=\"post\">\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"autism\">Do you have a child w/ autism spectrum disorder?</label>\n                    <select name=\"autism\" id=\"autism\">\n                        <option value=\"noans\">no answer</option>\n                        <option value=\"yes\">yes</option>\n                        <option value=\"no\">no</option>\n                    </select>\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"famaba\">Is anyone in your family receiving applied behavior analysis (ABA) services??</label>\n                    <select name=\"famaba\" id=\"famaba\">\n                        <option value=\"noans\">no answer</option>\n                        <option value=\"yes\">yes</option>\n                        <option value=\"no\">no</option>                    \n                    </select\n                </div>  \n            </div>\n            <div class=\"row\">\n                <div class=\"six columns\">\n                    <label for=\"age\">Age (in years) of individual receiving ABA services</label>\n                    <input type=\"number\" class=\"u-full-width\" name=\"age\" id=\"age\" min=\"-1\" max=\"99\" value=\"-1\">\n                </div>\n                <div class=\"six columns\">\n                    <label for=\"income\">What is your household income?</label>\n                    <input type=\"number\" class=\"u-full-width\" name=\"income\" id=\"income\" min=\"-1\" value=\"-1\">\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"u-full-width\">\n                    <label for=\"education\">Highest level of education obtained in your household.</label>\n                    <select class=\"u-full-width\" name=\"education\" id=\"education\">\n                        <option value=\"noans\">no answer</option>\n                        <option value=\"somehs\">some high school</option>\n                        <option value=\"gradhs\">high school graduate</option>\n                        <option value=\"some2yr\">some 2-year college (AA/AS)/technical program</option>\n                        <option value=\"grad2yr\">2-year college (AA/AS)/technical program graduate</option>\n                        <option value=\"some4yr\">some 4-year college/university</option>\n                        <option value=\"grad4yr\">4-year college/university graduate</option>\n                        <option value=\"somegrad\">some graduate school</option>\n                        <option value=\"gradgrad\">graduate school graduate</option>\n                    </select>\n                </div>\n                <input class=\"button-primary\" type=\"submit\" value=\"Submit\" id=\"submit-btn\">\n            </div>\n\n        </form>\n    </div>";
 	    var appcontainer = document.getElementById("app");
 	    appcontainer.innerHTML = formHTML;
 
@@ -469,7 +467,7 @@
 
 
 	// module
-	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\nbutton:disabled {\n  background-color: grey;\n}\n\nbutton:disabled:hover {\n  background-color: grey;\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n\n.timer {\n  font-size: 30px;\n  color: red;\n}\n\n.pspa-stimulus {\n  border: 2px solid black;\n}", ""]);
+	exports.push([module.id, "* {\n}\n\nbody {\n  font-family: 'Open Sans';\n}\n\nbutton:disabled {\n  background-color: grey;\n}\n\nbutton:disabled:hover {\n  background-color: grey;\n}\n\n.app-container {\n  position: relative;\n  height: 100vh;\n}\n\n.start-btn {\n  background-color: #00B16A;\n  border-radius: 4px;\n  text-align: center;\n/*  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);*/\n}\n\n.start-btn span {\n  color: white;\n  font-size: 2em;\n}\n\n.start-btn:hover {\n  background-color: #19b878;\n}\n\n.stop-container {\n  position: relative;\n  height: 100vh;\n}\n\n.stop-btn {\n  background-color: #c0392b;\n  border-radius: 4px;\n  text-align: center;\n  height: 20vh;\n  width: 25vw;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn span {\n  color: white;\n  font-size: 4em;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.stop-btn:hover {\n  background-color: #c64c40;\n}\n\n.task-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n}\n\n.instructions {\n  padding-bottom: 1em;\n  font-size: 2em;\n  color: #7f8c8d;\n}\n\n.task-button {\n  background-color: #3e8cc0;\n  color: white !important;\n  height: 3em;\n  font-size: 2em;\n  font-weight: normal;\n}\n\n.task-button:hover {\n  background-color: #2980b9;\n  color: white !important;\n}\n\n.now-label {\n  font-size: 2em;\n}\n\n.after-label {\n  font-size: 2em;\n  color: #e74c3c;\n}\n\n.results-container {\n  text-align: center;\n  height: 100vh;\n  width: 100%;\n\n}\n\n.u-vert-align {\n  position: relative;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n\n.timer {\n  font-size: 30px;\n  color: red;\n}\n\n.pspa-stimulus {\n  border: 2px solid black;\n}", ""]);
 
 	// exports
 

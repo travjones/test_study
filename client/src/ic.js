@@ -3,6 +3,9 @@ import start from './start';
 export default function ic() {
   var icHTML = `
   <div class="task-container">
+    <div class="u-full-width">
+      <img src="/uflogo.png" width="500">
+    </div>
     <form>
       <p>Check the checkbox below to indicate that you agree with the informed consent below.</p>
       <input type="checkbox" id="ic-check"></input>
